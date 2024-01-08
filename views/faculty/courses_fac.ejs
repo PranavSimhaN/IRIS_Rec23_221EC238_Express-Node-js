@@ -1,0 +1,50 @@
+<%- include('../partials/header1') %>
+
+
+  <div class="box" id="heading">
+    <h1 class="main-heading">
+    <%=listTitle%> :
+    </h1>
+
+        <div class="item">
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                
+                <th scope="col">TITLE</th>
+                <th scope="col">CODE</th>
+                <th scope="col">VIEW</th>
+
+              </tr>
+            </thead>
+
+            <% for(let item of listItems){%>
+            <tbody>
+
+              <tr>
+                
+                <td id="title<%=item.id%>">
+                  <%= item.title %>
+                </td>
+                <td id="title<%=item.id%>">
+                  <%= item.code %>
+                </td>
+
+               <td>
+            <form action="/coursesfaculty" method="POST">
+              <input type="text" value="<%= item.code %>" class="form-control" name="code" hidden>
+        <button class="btn btn-dark rounded-pill px-3" type="submit">View</button>
+            </form>
+               </td>
+                
+              </tr>
+              
+            </tbody>
+            <% } %>
+          </table>
+
+              </div>
+            </div>
+
+
+<%- include('../partials/footer') %>

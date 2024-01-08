@@ -1,0 +1,41 @@
+<%- include('../partials/header1') %>
+    
+<div class="container mt-5 reg">
+    <h1 class="top_1">Login as Faculty:</h1>
+  
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Makes POST request to /login route -->
+            <form action="/loginfaculty" method="POST">
+              <div class="form-group reg">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="username">
+              </div>
+
+              <div class="form-group reg">
+                <label for="email">Faculty ID</label>
+                <input type="number" class="form-control" name="fac_id">
+              </div>
+              
+              <div class="form-group reg">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+  
+              <div class="reg">
+              <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Login</button>
+          </div>
+  
+            </form>
+  
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+<%- include('../partials/footer') %>

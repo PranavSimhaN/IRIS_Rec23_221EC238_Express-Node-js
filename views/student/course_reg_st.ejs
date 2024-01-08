@@ -1,0 +1,50 @@
+<%- include('../partials/header1') %>
+
+
+<div class="container mt-5 reg">
+    <h1 class="top_1">Select Your Courses :</h1>
+  
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Makes POST request to /register route -->
+            <form action="/courseregistration" method="POST">
+
+
+              <div class="form-group reg">
+                <label>1St course</label>
+                <select name="code1" class="form-control">
+                    <% for(let item of listItems){%>
+                  <option value="<%=item.code%>"><%=item.code%></option>
+                  <% } %>
+                </select>
+              </div>
+            
+              <div class="form-group reg">
+                <label>2St course</label>
+                <select name="code2" class="form-control">
+                    <% for(let item of listItems){%>
+                  <option value="<%=item.code%>"><%=item.code%></option>
+                  <% } %>
+                </select>
+              </div>
+             
+             
+              <div class="reg">
+              <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Register</button>
+            </div>
+
+            </form>
+  
+          </div>
+        </div>
+      </div>
+  
+    
+  
+    </div>
+  </div>
+
+<%- include('../partials/footer1') %>

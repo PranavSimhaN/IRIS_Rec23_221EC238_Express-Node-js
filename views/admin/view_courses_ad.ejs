@@ -1,0 +1,57 @@
+<%- include('../partials/header1') %>
+
+<div class="box" id="heading">
+    <h1 class="main-heading">
+      <%=listItems[0].title%> (<%=listTitle%>) 
+    </h1>
+
+        <div class="item">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Program</th>
+                    <!-- <th scope="col">Program</th> -->
+
+                    <!-- <th scope="col"></th> -->
+
+                  </tr>
+                </thead>
+
+                <% for(let item of listItems){%>
+                <tbody>
+
+                  <tr>
+                    
+                    <td id="title<%=item.id%>">
+                      <%= item.name %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.branch %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.program %>
+                   </td>
+                   <!-- <td>
+                    <select name="branch" class="form-control">
+                      <option value="ECE">ECE</option>
+                      <option value="CSE">CSE</option>
+                    </select>
+                   </td> -->
+                    
+                  </tr>
+                  
+                </tbody>
+                <% } %>
+              </table>
+
+              </div>
+            </div>
+
+  
+              
+
+
+<%- include('../partials/footer') %>

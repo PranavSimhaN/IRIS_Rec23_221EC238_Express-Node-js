@@ -1,0 +1,83 @@
+<%- include('../partials/header1') %>
+
+<div class="box" id="heading">
+    <h1 class="main-heading">
+      <%=listItems[0].title%> (<%=listTitle%>) 
+    </h1>
+
+        <div class="item">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Program</th>
+                    <!-- <th scope="col">Program</th> -->
+
+                    <!-- <th scope="col"></th> -->
+
+                  </tr>
+                </thead>
+
+                <% for(let item of listItems){%>
+                <tbody>
+
+                  <tr>
+                    
+                    <td id="title<%=item.id%>">
+                      <%= item.name %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.branch %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.program %>
+                   </td>
+                   <!-- <td>
+                    <select name="branch" class="form-control">
+                      <option value="ECE">ECE</option>
+                      <option value="CSE">CSE</option>
+                    </select>
+                   </td> -->
+                    
+                  </tr>
+                  
+                </tbody>
+                <% } %>
+              </table>
+
+
+            
+
+              <a type="button" class="btn btn-dark rounded-pill btn-lg" href="/gotocourseapproval">Course Approval</a>
+
+              <a type="button" class="btn btn-dark rounded-pill btn-lg" href="/uploadmarks">Upload Marks</a>
+
+              <div class="col-lg-6 mx-auto">
+              
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center first-page1">
+                  
+               <form action="/takeattendance" method="POST">
+                <div class="form-group reg">
+                  <h3 class="main-heading">ATTENDANCE :</h3>
+                  <input type="text" class="form-control" name="date" placeholder="Enter Date(D/M/Y)" autocomplete="off" autofocus="true" />
+                  <input type="text" class="form-control" name="code" value="<%=listTitle%>" hidden/>
+                </div>
+
+                <div class="form-group reg">
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Take Attendance</button>
+              </div>
+              </form>
+              </div>
+              </div>
+              <!-- <a type="button" class="btn btn-dark rounded-pill btn-lg" href="/takeattendance">Take Attendance</a> -->
+
+              </div>
+            </div>
+
+  
+              
+
+
+<%- include('../partials/footer') %>

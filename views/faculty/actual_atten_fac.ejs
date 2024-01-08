@@ -1,0 +1,98 @@
+<%- include('../partials/header1') %>
+
+
+<div class="box" id="heading">
+    <h1 class="main-heading">
+     Mark Attendance :
+    </h1>
+
+        <div class="item">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    
+                    
+                    <th scope="col">Course Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Attended</th>
+                    <th scope="col">Mark</th>
+                    <th scope="col">Demark</th>
+
+                  </tr>
+                </thead>
+                <% for(let item of listItems1){%>
+                <tbody>
+
+                  <tr>
+                   
+                    
+                    <td id="title<%=item.id%>">
+                      <%= item.code %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.student %>
+                   </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.student_id%>
+                    </td>
+                    <td id="title<%=item.id%>">
+                        <%= item.attended%>
+                      </td>
+
+
+                    <td id="title<%=item.id%>">
+                        
+                        <form action="/mark" method="POST">
+                            
+                          <input type="text" class="form-control" name="code" value="<%=item.code%>" hidden/>
+                          <input type="text" class="form-control" name="name" value="<%=item.student %>" hidden/>
+                          <input type="text" class="form-control" name="date" value="<%=date1%>" hidden/>
+                          
+                        
+            
+                        <div class="form-group reg">
+                          <button class="button-68" type="submit"><img 
+                            src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png" alt="tick image" height="10px"></button>
+                          
+                      </div>
+                      </form>
+
+
+                      </td>
+
+                      <td id="title<%=item.id%>">
+                        
+                        <form action="/demark" method="POST">
+                            
+                          <input type="text" class="form-control" name="code" value="<%=item.code%>" hidden/>
+                          <input type="text" class="form-control" name="name" value="<%=item.student %>" hidden/>
+                          <input type="text" class="form-control" name="date" value="<%=date1%>" hidden/>
+                          
+                        
+            
+                        <div class="form-group reg">
+                          <button class="button-68" type="submit"><img 
+                            src="http://www.clipartbest.com/cliparts/Kin/XXL/KinXXLBeT.png" alt="wrong mark" height="10px"></button>
+                          
+                      </div>
+                      </form>
+
+
+                      </td>
+                   
+
+                  </tr>
+                  
+                </tbody>
+                <% } %>
+              </table>
+
+
+              <a href="/coursesfaculty" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Submit and go back</a>
+
+              </div>
+            </div>
+
+
+  <%- include('../partials/footer') %>

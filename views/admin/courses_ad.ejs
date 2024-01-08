@@ -1,0 +1,175 @@
+<%- include('../partials/header1') %>
+
+<div class="box" id="heading">
+    <h1 class="main-heading">
+      <%= listTitle %>:
+    </h1>
+
+        <div class="item">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Course Code</th>
+                    <th scope="col">Faculty</th>
+                    <th scope="col">Faculty ID</th>
+                    <th scope="col">Schedule(Daily Timings)</th>
+
+
+                  </tr>
+                </thead>
+                <% for(let item of listItems){%>
+                <tbody>
+
+                  <tr>
+                    <th scope="row" id="title<%=item.id%>"> 
+                      <%= item.id %>
+                    </th>
+                    <td id="title<%=item.id%>">
+                      <%= item.title %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.code %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.faculty %>
+                   </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.faculty_id%>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.schedule%>
+                    </td>
+
+                  </tr>
+                  
+                </tbody>
+                <% } %>
+              </table>
+
+              </div>
+            </div>
+
+  
+              <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4 main-heading">EDIT COURSES:</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center first-page1">
+
+                  <form class="item" action="/addcourse" method="post">
+                    <p class="lead mb-4 main-heading">ADD COURSES:</p>
+                    <div class="form-group reg">
+                    <input type="text" class="form-control" name="title" placeholder="Title" autocomplete="off" autofocus="true" />
+                  </div>
+
+                  <div class="form-group reg">
+                    <input type="text" class="form-control" name="code" placeholder="Course code" autocomplete="off" autofocus="true" />
+                  </div>
+
+                  <div class="form-group reg">
+                    <label class="top_1">Faculty</label>
+                    <select name="faculty" aria-placeholder="faculty" class="form-control">
+                <% for(let item of listItems1){%>
+
+                      <option value="<%=item.name%>"><%=item.name%></option>
+                <% } %>
+                      
+                    </select>
+                  </div>
+
+                  <div class="form-group reg">
+                    <label class="top_1">Schedule</label>
+                    <select name="schedule" class="form-control">
+                      <option value="8:00 to 9:00">8:00 to 9:00</option>
+                      <option value="9:00 to 10:00">9:00 to 10:00</option>
+                      <option value="10:00 to 11:00">10:00 to 11:00</option>
+                      <option value="11:00 to 12:00">11:00 to 12:00</option>
+                      <option value="1:00 to 2:00">1:00 to 2:00</option>
+
+                    </select>
+                  </div>
+
+                    <div class="reg">
+                      <button type="submit" class="btn btn-primary btn-lg px-4 " value=<%=listTitle %> >+</button>
+                    </div>
+                  </form>
+
+
+                  <form class="item" action="/deletecourse" method="post">
+
+                    <p class="lead mb-4 main-heading">DELETE COURSES:</p>
+                  
+                  <div class="form-group reg">
+                    <label class="top_1">Course Code</label>
+                    <select name="code"  class="form-control">
+                <% for(let item of listItems){%>
+
+                      <option value="<%=item.code%>"><%=item.code%></option>
+                <% } %>
+                      
+                    </select>
+                  </div>
+
+                    <div class="reg">
+                      <button type="submit" class="btn btn-primary btn-lg px-4 " value=<%=listTitle %> >Remove</button>
+                    </div>
+                  </form>
+
+
+                  <form class="item" action="/viewcourse1" method="post">
+                    <p class="lead mb-4 main-heading">VIEW COURSE:</p>
+            
+                  <div class="form-group reg">
+                    <label class="top_1">Course Code</label>
+                    <select name="code"  class="form-control">
+                <% for(let item of listItems){%>
+            
+                      <option value="<%=item.code%>"><%=item.code%></option>
+                <% } %>
+                      
+                    </select>
+                  </div>
+
+
+                    <div class="reg">
+                      <button type="submit" class="btn btn-primary btn-lg px-4 " value=<%=listTitle %> >See</button>
+                    </div>
+                  </form>
+
+                
+                  
+
+
+                </div>
+
+                <form class="item" action="/adddetail" method="post">
+                  <p class="lead mb-4 main-heading">ADD DESCRIPTION:</p>
+          
+                <div class="form-group reg">
+                  <label class="top_1">Course Code</label>
+                  <select name="code"  class="form-control">
+              <% for(let item of listItems){%>
+          
+                    <option value="<%=item.code%>"><%=item.code%></option>
+              <% } %>
+                    
+                  </select>
+                </div>
+
+                
+                <div class="form-group reg">
+                  <input type="text" class="form-control" name="detail" placeholder="enter details of course">
+                </div>
+          
+                  <div class="reg">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 " value=<%=listTitle %> >Add</button>
+                  </div>
+                </form>
+
+              </div>
+
+             
+
+      
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,50 @@
+<%- include('../partials/header1') %>
+<div class="container">
+    <div class="main-body">
+        <div class="centre">
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total Classes Attended</h6>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span><%=Present %></span></h2>
+                    <p class="m-b-0">Classes not attended : <%=Absent %></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Percentage</h6>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span><%=percent%>%</span></h2>
+                    <p class="m-b-0">Total Classes taken : <%=Total %></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h2 class="m-b-20">Leaves :</h2>
+                    <h2 class="text-right green"><i class="fa fa-refresh f-left"></i><span><%=Leaves %></span></h2>
+                    <% if(Attend!=0) {%>
+                    <h2 class="text-right red">You need to attend <%=Attend %> classes to be safe</h2>
+                    <% } %>
+                    <!-- <p class="m-b-0 red">classes to attend to be safe : </p> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    </div>
+</div>
+
+
+<%- include('../partials/footer') %>

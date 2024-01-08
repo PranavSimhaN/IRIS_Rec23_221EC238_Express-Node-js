@@ -1,0 +1,182 @@
+<%- include('../partials/header1') %>
+
+<div class="box" id="heading">
+    <h1 class="main-heading">
+      <%=listTitle%> 
+    </h1>
+
+        <div class="item">
+
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">MID-SEM</th>
+                    <th scope="col">END-SEM</th>
+                    <th scope="col">GRADE</th>
+
+                    <!-- <th scope="col">Approve</th> -->
+
+                    <!-- <th scope="col"></th> -->
+
+                  </tr>
+                </thead>
+
+                <% for(let item of listItems){%>
+                <tbody>
+
+                  <tr>
+                    
+                    <td id="title<%=item.id%>">
+                      <%= item.name %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.branch %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.midsem_marks %>
+                   </td>
+                   <td id="title<%=item.id%>">
+                    <%= item.endsem_marks %>
+                 </td>
+                 <td id="title<%=item.id%>">
+                    <%= item.grade %>
+                 </td>
+                   <!-- <td>
+                    <select name="branch" class="form-control">
+                      <option value="true">true</option>
+                      <option value="false">false</option>
+                    </select>
+                   </td> -->
+                    
+                  </tr>
+                  
+                </tbody>
+                <% } %>
+              </table>
+
+              
+<!-- 
+              <form action="/courseapprovaldone" method="POST">
+              
+                <input type="text" class="form-control" name="code" value="true" hidden>
+
+              <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Course Approval</button>
+            </form> -->
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4 main-heading">UPDATE MARKS:</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center first-page1">
+
+            <form action="/midsem" method="POST">
+
+              <p class="lead mb-4 main-heading">MIDSEM MARKS :</p>
+
+              <div class="form-group reg">
+                <select name="name" class="form-control">
+            <% for(let item of listItems){%>
+                  <option value="<%=item.name%>"><%=item.name%></option>
+            <% } %>
+                </select>
+              </div>
+
+              <div class="form-group reg">
+                <input type="text" class="form-control" name="code" value="<%=listTitle%>" hidden>
+              </div>
+
+              <div class="form-group reg">
+                <input type="number" class="form-control" name="midsem" placeholder="marks out of 50">
+              </div>
+             
+              <div class="reg">
+              <button type="submit" class="btn btn-primary btn-lg px-4 gap-3" >UPDATE</button>
+            </div>
+
+            </form>
+
+            <form action="/endsem" method="POST">
+
+              <p class="lead mb-4 main-heading">ENDSEM MARKS :</p>
+              <div class="form-group reg">
+                <select name="name" class="form-control">
+            <% for(let item of listItems){%>
+                  <option value="<%=item.name%>"><%=item.name%></option>
+            <% } %>
+                </select>
+              </div>
+
+              <div class="form-group reg">
+                <input type="text" class="form-control" name="code" value="<%=listTitle%>" hidden>
+              </div>
+
+              <div class="form-group reg">
+                <input type="number" class="form-control" name="endsem" placeholder="marks out of 100">
+              </div>
+             
+             
+              <div class="reg">
+              <button type="submit" class="btn btn-primary btn-lg px-4 gap-3" >UPDATE</button>
+            </div>
+
+            </form>
+
+            <form action="/grade" method="POST">
+
+                <p class="lead mb-4 main-heading">GRADE :</p>
+                <div class="form-group reg">
+                  <select name="name" class="form-control">
+              <% for(let item of listItems){%>
+                    <option value="<%=item.name%>"><%=item.name%></option>
+              <% } %>
+                  </select>
+                </div>
+  
+                <div class="form-group reg">
+                  <input type="text" class="form-control" name="code" value="<%=listTitle%>" hidden>
+                </div>
+
+                <!-- <div class="form-group reg">
+                    <input type="text" class="form-control" name="grade" placeholder="enter grade">
+                  </div> -->
+
+                  <div class="form-group reg">
+                    <select name="grade" class="form-control">
+                      <option value="AA">AA</option>
+                      <option value="AB">AB</option>
+                      <option value="BA">BA</option>
+                      <option value="BB">BB</option>
+                      <option value="BC">BC</option>
+                      <option value="CC">CC</option>
+                      <option value="CD">CD</option>
+                      <option value="DD">DD</option>
+                      <option value="FF">FF</option>
+                      <option value="FA">FA</option>
+                      <option value="I">I</option>
+
+
+
+
+
+
+                    </select>
+                    <!-- <input type="text" class="form-control" name="branch"> -->
+                  </div>
+               
+                <div class="reg">
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3" >UPDATE</button>
+              </div>
+  
+              </form>
+
+</div>
+  </div>            
+
+              </div>
+            </div>
+
+  
+              
+
+
+<%- include('../partials/footer') %>

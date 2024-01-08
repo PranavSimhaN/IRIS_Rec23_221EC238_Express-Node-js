@@ -1,0 +1,59 @@
+<%- include('../partials/header1') %>
+
+
+<div class="box" id="heading">
+    <h1 class="main-heading">
+     Mark Attendance :
+    </h1>
+
+        <div class="item">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    
+                   
+                    <th scope="col">Course Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Date</th>
+
+
+                    
+
+
+                  </tr>
+                </thead>
+                <% for(let item of listItems1){%>
+                <tbody>
+
+                  <tr>
+                   
+                    <td id="title<%=item.id%>">
+                      <%= item.code %>
+                    </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.student %>
+                   </td>
+                    <td id="title<%=item.id%>">
+                      <%= item.student_id%>
+                    </td>
+                    <td id="title<%=item.id%>">
+                        <%=date1%>
+                      </td>
+                   
+
+                  </tr>
+                  
+                </tbody>
+                <% } %>
+              </table>
+
+              <a type="button" class="btn btn-dark rounded-pill btn-lg" href="/takeattendance1">Take Attendance</a>
+
+
+              </div>
+            </div>
+
+
+
+  <%- include('../partials/footer') %>
