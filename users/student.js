@@ -10,6 +10,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 
 const client = require('twilio')(process.env.TWILIO_SID,process.env.TWILIO_AUTH_TOKEN);
+const nodemailer = require('nodemailer');
 
 
 var User=require("../models/user");
@@ -20,6 +21,7 @@ let current_student_id;
 let glogin;
 let goo_id;
 let hide="";
+let errorMessage;
 
 
 passport.use(new GoogleStrategy({
@@ -164,6 +166,7 @@ router.post("/registerstudent", function(req, res){
     const department=req.body.branch;
     const  program=req.body.program;
     const phone_number=req.body.phone_number;
+    const user_name=req.body.username;
     
     if(req.body.conpassword===req.body.password && name!="NULL"){
 
@@ -200,6 +203,7 @@ Counter.findOneAndUpdate(
           user.Student_ID=Student_ID;
           user.stu_id=id;
           user.phone_number=phone_number;
+        
           user.save(async function(){
 
             client.messages
@@ -212,6 +216,33 @@ Counter.findOneAndUpdate(
             .catch(function(err)  {
               console.log(err);
             });
+
+            const msg = {
+              from: "simhapranav.3@gmail.com",
+              to: user_name,
+              subject: "IRIS NITK",
+              text: "Hello "+name+", "+Student_ID+" is your Student_ID."+"From IRIS NITK"
+              };
+              
+              nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+              user: "simhapranav.3@gmail.com",
+              pass: process.env.NODE_MAIL_PASSCODE
+              },
+              port: 465,
+              host: 'smtp.gmail.com'
+              })
+              
+              .sendMail(msg , (err)=>{
+              if (err) {
+              return console.log('Error occurs', err);
+              }else{
+              return console.log('Email Sent');
+              }
+              });
+
+
 
             await x.x1(name,program,department);
               console.log(name);
@@ -227,7 +258,7 @@ Counter.findOneAndUpdate(
     }
     
 else{
-  const errorMessage="(Fill all the details and match both passwords)";
+  errorMessage="(Fill all the details and match both passwords)";
       console.log(errorMessage);
       res.render("student/register_st");
 
@@ -376,26 +407,6 @@ router.post("/viewspecificstudent", async function(req, res){
      
       let present=0;
       let absent=0;
-      // for(let i=0;i<items2.length;i++){
-      //   if(items2[i]==true){
-      //     present++;
-      //   }
-      //   else if(items2[i]==false){
-      //     absent++;
-      //   }
-
-      //   let atten = (present/(items2.length))*100;
-      //   // console.log(atten);
-
-      // }
-        // console.log(items2.length);
-        // console.log(items.length);
-        // console.log(code1);
-        // console.log(id);
-        // console.log(items);
-        // console.log(items2);
-
-
         
         if(items.length!=0) {
         res.render("student/course_specific_st", {
@@ -405,14 +416,14 @@ router.post("/viewspecificstudent", async function(req, res){
         });
        }
         else{
-          console.log("WTFFFFFFFF");
+          
           res.redirect("/allcoursesstudent");
         }
       }
     
       catch (err) {
         console.log(err);
-        // res.redirect("/coursesfaculty");
+        res.redirect("/coursesstudent");
 
       }
 
@@ -502,14 +513,13 @@ router.post("/seeatten", async function(req, res){
         });
        }
         else{
-          console.log("WTFFFFFFFF");
           res.redirect("/allcoursesstudent");
         }
       }
     
       catch (err) {
         console.log(err);
-        res.redirect("/coursesfaculty");
+        res.redirect("/coursesstudent");
 
       }   
 
