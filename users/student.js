@@ -319,7 +319,9 @@ router.get("/courseregistration", async function(req, res){
         try {
           let items = await x.x2();
 
-            res.render("student/course_reg_st",{listItems: items});
+            res.render("student/course_reg_st",{listItems: items,
+              CError:courseError
+            });
           }
         
           catch (err) {
@@ -331,14 +333,18 @@ router.get("/courseregistration", async function(req, res){
     }
   });
 
+  let courseError="";
+
 router.post("/courseregistration", async function(req, res){
-    hide="hidden";
+    // hide="hidden";
     const code1=req.body.code1;
     const code2=req.body.code2;
+    let user_name;
     console.log(code1);
     console.log(code2);
-    
-     
+
+    if(code1!=code2){
+      console.log("done");
     User.findOne({stu_id:current_student_id}, function(err, foundUser){
      if (err) {
        console.log(err);
@@ -346,6 +352,33 @@ router.post("/courseregistration", async function(req, res){
        if (foundUser) {
         foundUser.c_button="hidden";
         hide=foundUser.c_button;
+        name1=foundUser.name;
+        user_name=foundUser.username;
+      
+        const msg = {
+          from: "simhapranav.3@gmail.com",
+          to:user_name,
+          subject: "IRIS NITK",
+          text: "Hello "+name1+", "+"You registered for the courses "+code1+" and"+code2+".From IRIS NITK"
+          };
+          
+          nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+          user: "simhapranav.3@gmail.com",
+          pass: process.env.NODE_MAIL_PASSCODE
+          },
+          port: 465,
+          host: 'smtp.gmail.com'
+          })
+          
+          .sendMail(msg , (err)=>{
+          if (err) {
+          return console.log('Error occurs', err);
+          }else{
+          return console.log('Email Sent');
+          }
+          });
         
         foundUser.save(async function(){
  
@@ -360,8 +393,7 @@ router.post("/courseregistration", async function(req, res){
            await x.x5(item1[0].title,item1[0].code,item1[0].faculty_id,item1[0].faculty,current_student_id,item3[0].name);
        
            await x.x5(item2[0].title,item2[0].code,item2[0].faculty_id,item2[0].faculty,current_student_id,item3[0].name);
-       
-           res.redirect("/coursesstudent");
+       res.redirect("/coursesstudent");
          }
        
          catch (err) {
@@ -373,7 +405,13 @@ router.post("/courseregistration", async function(req, res){
        }
      }
    });
-    
+
+  }
+
+  else{
+    courseError="(Don't choose same course more than once)";
+    res.redirect("/courseregistration");
+  } 
    });  
 
 router.get("/allcoursesstudent",async function(req,res){

@@ -14,7 +14,7 @@ const db = new pg.Client({
   }
 
   const x2 = async()=>{
-    const result = await db.query("SELECT code FROM coursedetail;");
+    const result = await db.query("SELECT code,title FROM coursedetail;");
            return items = result.rows;
   }
 
