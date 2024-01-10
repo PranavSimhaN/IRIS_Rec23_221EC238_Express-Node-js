@@ -160,5 +160,34 @@ const db = new pg.Client({
     await db.query("UPDATE coursedetail SET file_path=($1) WHERE code=($2)",[a,b]);
   }
   
+  const x34 = async(a,b,c,d,e,f)=>{
+    await db.query("INSERT INTO coursefeedback (faculty_id,student_id,student,faculty,code,title) VALUES ($1,$2,$3,$4,$5,$6)",[a,b,c,d,e,f]);
+  }
 
-  module.exports={x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,x17,x18,x19,x20,x21,x22,x23,x24,x25,x26,x27,x28,x29,x30,x31,x32,x33};
+  const x35 = async(id,code)=>{
+    const result = await db.query("SELECT * FROM coursefeedback WHERE student_id=($1) AND code=($2)",[id,code]);
+      return  items = result.rows;
+  }
+
+  const x36= async(a,b,c)=>{
+    await db.query("UPDATE coursefeedback SET was_course_helpful=($1) WHERE code=($2) AND student_id=($3)",[a,b,c]);
+  }
+
+  const x37= async(a,b,c)=>{
+    await db.query("UPDATE coursefeedback SET faculty_rating=($1) WHERE code=($2) AND student_id=($3)",[a,b,c]);
+  }
+
+  const x38= async(a,b,c)=>{
+    await db.query("UPDATE coursefeedback SET feedback=($1) WHERE code=($2) AND student_id=($3)",[a,b,c]);
+  }
+
+  const x39= async(a,b,c)=>{
+    await db.query("UPDATE coursefeedback SET button=($1) WHERE code=($2) AND student_id=($3)",[a,b,c]);
+  }
+
+  const x40 = async(id,code,a)=>{
+    const result = await db.query("DELETE FROM coursefeedback WHERE student_id=($1) AND code=($2) AND id=($3)",[id,code,a]);
+      return  items = result.rows;
+  }
+
+  module.exports={x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,x17,x18,x19,x20,x21,x22,x23,x24,x25,x26,x27,x28,x29,x30,x31,x32,x33,x34,x35,x36,x37,x38,x39,x40};

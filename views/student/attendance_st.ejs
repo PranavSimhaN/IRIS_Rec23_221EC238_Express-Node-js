@@ -49,25 +49,40 @@
                       <tr>
                         
                         <th scope="col">DATE</th>
-                        <th scope="col">PRESENT?</th>
+                        <th scope="col">PRESENT</th>
                         
                       </tr>
                     </thead>
         
                     <% for(let item of listItems){%>
                     <tbody>
-        
-                      <tr>
+                      <% if(item.attended==false){ %>
+                      <tr class="table-danger">
                         
-                        <td id="title<%=item.id%>">
+                        <td id="title<%=item.id%>" >
                           <%= item.date %>
                         </td>
                         <td id="title<%=item.id%>">
-                          <%= item.attended %>
+                           No 
                         </td>
                         
                       </tr>
-                      
+                      <% } %>
+                      <% if(item.attended==true){%> 
+                        <tr class="table-success">
+                        
+                          <td id="title<%=item.id%>" >
+                            <%= item.date %>
+                          </td>
+                          <td id="title<%=item.id%>">
+                             Yes
+                          </td>
+                          
+                        </tr>
+
+                        <% } %>
+
+
                     </tbody>
                     <% } %>
                   </table>

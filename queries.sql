@@ -42,6 +42,20 @@ CREATE TABLE attendance (
   date TEXT
 );
 
+CREATE TABLE coursefeedback(
+  id SERIAL PRIMARY KEY,
+  faculty_id INTEGER REFERENCES faculty(id),
+  student_id INTEGER REFERENCES student(id),
+  code TEXT,
+  student TEXT,
+  faculty TEXT,
+  title TEXT,
+  was_course_helpful BOOLEAN,
+  faculty_rating INTEGER,
+  feedback TEXT,
+  button TEXT
+);
+
 CREATE TABLE faculty (
   id SERIAL PRIMARY KEY,
   name TEXT,

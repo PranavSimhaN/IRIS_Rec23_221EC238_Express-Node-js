@@ -1,0 +1,119 @@
+<%- include('../partials/header1') %>
+
+
+  <div class="box" id="heading">
+    <h1 class="main-heading">
+    Course feedback :
+    </h1>
+
+        <div class="item">
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                
+                <th scope="col">CODE</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">WAS THE COURSE HELPFUL</th>
+                <th scope="col">FACULTY RATING</th>
+                <th scope="col">FEEDBACK</th>
+                <th scope="col">DELETE FEEDBACK</th>
+
+
+
+              </tr>
+            </thead>
+
+            <% for(let item of listItems){%>
+            <tbody>
+
+              <tr>
+                
+                <td id="title<%=item.id%>">
+                  <%= item.code%>
+                </td>
+
+                <td id="title<%=item.id%>">
+                    <%= item.title%>
+                  </td>
+                
+
+               <td>
+            <form action="/helpful" method="POST">
+              <input type="text" value="<%= item.code %>" class="form-control" name="code" hidden>
+              <input type="number" value="<%= item.student_id%>" class="form-control" name="id" hidden>
+              <div class="form-group reg">
+
+              <select name="helpful" class="form-control">
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+            </div>
+
+
+        <button class="btn btn-dark rounded-pill px-3" type="submit">Submit</button>
+            </form>
+               </td>
+
+               
+               <td>
+                <form action="/rating" method="POST">
+                  <input type="text" value="<%= item.code %>" class="form-control" name="code" hidden>
+                  <input type="number" value="<%= item.student_id%>" class="form-control" name="id" hidden>
+              <div class="form-group reg">
+
+                  <select name="rating" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+            <button class="btn btn-dark rounded-pill px-3" type="submit">Submit</button>
+                </form>
+                   </td>
+
+                   
+               <td>
+                <form action="/feedback" method="POST">
+                  <input type="text" value="<%= item.code %>" class="form-control" name="code" hidden>
+                  <input type="number" value="<%= item.student_id%>" class="form-control" name="id" hidden>
+              <div class="form-group reg">
+                  <input type="text" class="form-control" name="feedback" >
+                </div>
+            <button class="btn btn-dark rounded-pill px-3" type="submit">Submit</button>
+                </form>
+                   </td>
+                
+              
+
+              <td>
+                <form action="/feedbackdelete" method="POST">
+                  <input type="text" value="<%= item.code %>" class="form-control" name="code" hidden>
+                  <input type="number" value="<%= item.student_id%>" class="form-control" name="id" hidden>
+                  <input type="number" value="<%= item.id%>" class="form-control" name="appli_id" hidden>
+            <button class="btn btn-dark rounded-pill px-3" type="submit">Delete</button>
+                </form>
+                   </td>
+                
+              </tr>
+              
+            </tbody>
+            <% } %>
+          </table>
+
+          <form action="/submitfeedback" method="POST">
+            <input type="text" value="<%= listItems[0].code %>" class="form-control" name="code" hidden>
+            <input type="number" value="<%= listItems[0].student_id%>" class="form-control" name="id" hidden>
+        <div class="form-group reg">
+            
+            <input type="text" class="form-control" name="hidden" value="hidden" hidden>
+          </div>
+      <button class="btn btn-dark rounded-pill px-3" type="submit">Submit and go back</button>
+          </form>
+
+              </div>
+            </div>
+
+
+<%- include('../partials/footer') %>
