@@ -170,10 +170,10 @@ router.post("/registerstudent", function(req, res){
     
     if(req.body.conpassword===req.body.password && name!="NULL"){
 
-Counter.findOneAndUpdate(
-{code:"autoval"},
-{"$inc":{"seq":1,"id":1}},
-{new:true},(err,cd)=>{
+  Counter.findOneAndUpdate(
+  {code:"autoval"},
+  {"$inc":{"seq":1,"id":1}},
+  {new:true},(err,cd)=>{
   
   let seqID;
   let ID;
@@ -248,13 +248,13 @@ Counter.findOneAndUpdate(
               console.log(name);
               res.redirect("/loginstudent");
             });
-        });
-      }
-  });
+          });
+        }
+    });
 
-}
+  }
 
-)
+  )
     }
     
 else{
@@ -262,9 +262,11 @@ else{
       console.log(errorMessage);
       res.render("student/register_st");
 
-}
+  }
 
 });
+
+let current_name;
 
 router.post("/loginstudent", function(req, res){
 
@@ -282,6 +284,7 @@ router.post("/loginstudent", function(req, res){
             if (foundUser.username === user.username) {
                 current_student_id=foundUser.stu_id;
                 hide=foundUser.c_button;
+                current_name=foundUser.name;
                 console.log(current_student_id);
              
                 req.login(user, function(err){
@@ -301,13 +304,26 @@ router.post("/loginstudent", function(req, res){
           }
         }
       }); 
-
-
 });
 
 router.get("/coursesstudent", async function(req, res){
     if (req.isAuthenticated()){
-            res.render("student/courses_st",{hidden:hide});
+
+      const d = new Date("Jan 9, 2024 23:59:00");
+      let day = d.getUTCDate();
+      let month = d.getUTCMonth();
+      let year = d.getUTCFullYear();
+      console.log(year);
+      console.log(day);
+      console.log(month);
+      hide1="";
+      if(month>=0 && day>=10 && year>=2024){
+        hide1="hidden";
+      }
+            res.render("student/courses_st",{hidden:hide,
+            StudentName:current_name,
+            hidden_delete_option:hide1
+            });
     } else {
       res.redirect("/loginstudent");
     }
@@ -433,6 +449,49 @@ router.get("/allcoursesstudent",async function(req,res){
 }
 });  
 
+
+router.get("/studeletecourses",async function(req,res){
+  if (req.isAuthenticated()){
+
+    try {
+      let items = await x.x21(current_student_id);
+
+        res.render("student/delete_course_st",{listItems: items,
+        current: current_student_id});
+      }
+    
+      catch (err) {
+        console.log(err);
+      }
+
+} else {
+  res.redirect("/loginstudent");
+}
+});  
+
+
+router.post("/studeletecourses", async function(req, res){
+  code1=req.body.code;
+  id=req.body.id;
+  // items2 = await x.x31(id,code1);
+  if (req.isAuthenticated()){
+
+    try {
+      await x.x32(id,code1);
+      res.redirect("/studeletecourses");
+      }
+    
+      catch (err) {
+        console.log(err);
+        res.redirect("/studeletecourses");
+      }  
+
+} else {
+  res.redirect("/loginstudent");
+}
+});
+
+
 router.post("/viewspecificstudent", async function(req, res){
   code1=req.body.code;
   id=req.body.id;
@@ -501,11 +560,11 @@ router.post("/seeatten", async function(req, res){
       let absent1=absent;
 
         attendance = (present/(items2.length))*100;
-        console.log(items2);
-        console.log(items2.length);
-        console.log(absent);
-        console.log(present);
-        console.log(attendance);
+        // console.log(items2);
+        // console.log(items2.length);
+        // console.log(absent);
+        // console.log(present);
+        // console.log(attendance);
 
       let atten =attendance;
       let leaves=0;
@@ -534,9 +593,6 @@ router.post("/seeatten", async function(req, res){
     }   
     console.log("Leaves :"+leaves);
     console.log("Attend :"+attend);
-    console.log(1/2);
-
-      
 
         if(items.length!=0) {
         res.render("student/attendance_st", {
@@ -565,6 +621,5 @@ router.post("/seeatten", async function(req, res){
   res.redirect("/loginstudent");
 }
 });
-
 
 module.exports={router,current_student_id,glogin,goo_id,hide};

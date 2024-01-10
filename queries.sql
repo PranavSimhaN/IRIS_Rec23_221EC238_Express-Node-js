@@ -20,6 +20,7 @@ CREATE TABLE coursedetail (
 	faculty TEXT,
 	schedule TEXT,
 	course_description VARCHAR(300),
+  file_path TEXT
 );
 
 CREATE TABLE student (

@@ -1,0 +1,62 @@
+<%- include('../partials/header1') %>
+
+
+  <div class="box" id="heading">
+    <h1 class="main-heading">
+    Courses :
+    </h1>
+
+        <div class="item">
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                
+                <th scope="col">TITLE</th>
+                <th scope="col">CODE</th>
+                <th scope="col"></th>
+                <th scope="col">DELETE COURSE</th>
+
+              </tr>
+            </thead>
+
+            <% for(let item of listItems){%>
+            <tbody>
+
+              <tr>
+                
+                <td id="title<%=item.id%>">
+                  <%= item.title %>
+                </td>
+                <td id="title<%=item.id%>">
+                  <%= item.code %>
+                </td>
+
+                <td>
+                    <p class="red">Do you confirm to delete this course?</p>
+                  </td>
+
+
+               <td>
+            <form action="/studeletecourses" method="POST">
+              <input type="text" value="<%= item.code %>" class="form-control" name="code" hidden>
+              <input type="number" value="<%=current%>" class="form-control" name="id" hidden>
+              <div class="reg">
+                <button class="button-68" type="submit"><img 
+                  src="http://www.clipartbest.com/cliparts/Kin/XXL/KinXXLBeT.png" alt="wrong mark" height="10px"></button>
+            </div>
+            </form>
+               </td>
+                
+              </tr>
+              
+            </tbody>
+            <% } %>
+          </table>
+
+          <a href="/coursesstudent" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go back</a>
+
+              </div>
+            </div>
+
+
+<%- include('../partials/footer') %>

@@ -38,6 +38,44 @@
         </div>
 
 
+        <div class="box" id="heading">
+            <h1 class="main-heading">
+            LIST OF DAYS :
+            </h1>
+        
+                <div class="item">
+                  <table class="table table-hover table-dark">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">DATE</th>
+                        <th scope="col">PRESENT?</th>
+                        
+                      </tr>
+                    </thead>
+        
+                    <% for(let item of listItems){%>
+                    <tbody>
+        
+                      <tr>
+                        
+                        <td id="title<%=item.id%>">
+                          <%= item.date %>
+                        </td>
+                        <td id="title<%=item.id%>">
+                          <%= item.attended %>
+                        </td>
+                        
+                      </tr>
+                      
+                    </tbody>
+                    <% } %>
+                  </table>
+        
+                      </div>
+                    </div>
+
+
 
 
 

@@ -1,9 +1,7 @@
 <%- include('../partials/header1') %>
 
 <div class="box" id="heading">
-    <h1 class="main-heading">
-      <%=listTitle%> 
-    </h1>
+    <h1 class="main-heading">(<%=listTitle%>) </h1>
 
         <div class="item">
 
@@ -81,10 +79,7 @@
 
 </div>
 
-              <form action="/courseapproval" method="POST">
-                <input type="text" class="form-control" name="code" value="<%=listTitle%>" hidden>
-                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3" <%=hidden%>>Approve the above students</button>
-              </form>
+<a href="/coursesfaculty" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go back</a>
 
               
 

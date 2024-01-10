@@ -134,7 +134,6 @@ router.get("/coursesfaculty", async function(req, res){
           listItems: items
         });
       }
-    
       catch (err) {
         console.log(err);
       }
@@ -176,10 +175,7 @@ router.post("/coursesfaculty", async function(req, res){
 }
 });
 
-
-
 let hide="";
-
 
 router.get("/gotocourseapproval",async function(req,res){
 
@@ -187,11 +183,15 @@ router.get("/gotocourseapproval",async function(req,res){
 
         try {
           items = await x.x16(code1);
-          const d = new Date();
-          const e = d.getMinutes();
-          console.log(e);
-
-          if(e>15){
+          const d = new Date("Jan 9, 2024 23:59:00");
+          let day = d.getUTCDate();
+          let month = d.getUTCMonth();
+          let year = d.getUTCFullYear();
+          console.log(year);
+          console.log(day);
+          console.log(month);
+          hide="";
+          if(month>=0 && day>=10 && year>=2024){
             hide="hidden";
           }
 
@@ -199,7 +199,6 @@ router.get("/gotocourseapproval",async function(req,res){
             listTitle: code1,
             listItems: items,
             hidden:hide
-
           });
           }
         
@@ -220,7 +219,7 @@ router.post("/deletestudent",async function(req,res){
     try {
             
       await x.x19(code,name);
-      res.redirect("/uff");
+      res.redirect("/gotocourseapproval");
       
     } 
     catch (err) {
@@ -230,39 +229,6 @@ router.post("/deletestudent",async function(req,res){
 else {
     res.redirect("/loginfaculty");
   }
-
-});
-
-
-router.post("/courseapproval",async function(req,res){
-    hide="hidden";
-
-    const code = req.body.code;
-    User.findOne({fac_id:current_faculty_id}, function(err, foundUser){
-        if (err) {
-          console.log(err);
-        } else {
-          if (foundUser) {
-          //  foundUser.c_button="hidden";
-          //  hide=foundUser.c_button;
-
-           foundUser.save(async function(){
-    
-            try {
-            await x.x20(code);
-              res.redirect("/gotocourseapproval");
-            }
-          
-            catch (err) {
-              console.log(err);
-            }
-        
-           
-          });
-    
-          }
-        }
-      });
 
 });
 
