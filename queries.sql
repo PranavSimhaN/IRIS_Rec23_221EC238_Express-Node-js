@@ -9,7 +9,7 @@ CREATE TABLE course (
 	midsem_marks INT,
 	endsem_marks INT,
 	grade TEXT,
-    registered BOOLEAN
+  registered BOOLEAN
 );
 
 CREATE TABLE coursedetail (

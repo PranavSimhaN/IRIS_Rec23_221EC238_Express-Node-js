@@ -4,6 +4,18 @@ var router=express.Router();
 const session = require("express-session"); 
 var x =require("../Postgresql/function");
 var passport=require("passport");
+var multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, "./public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null,`${Date.now()}-${file.originalname}`);
+  }
+})
+
+const upload = multer({storage});
 
 var User=require("../models/user");
 var Counter1 = require("../models/counter1");
@@ -394,6 +406,28 @@ router.post("/demark", async(req, res) => {
     console.log(err);
   }
 
+});
+
+router.post("/upload",upload.single('link'),async(req,res)=>{
+  // console.log(req.body);
+  console.log(req.file);
+  link = req.file.path;
+  console.log(link);
+  code=req.body.code;
+  if (req.isAuthenticated()){
+
+    try {
+      await x.x33(link,code);
+      res.redirect("/coursesfaculty");
+      }
+    
+      catch (err) {
+        console.log(err);
+      }
+
+} else {
+  res.redirect("/loginfaculty");
+}
 });
 
 

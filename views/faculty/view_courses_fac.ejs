@@ -54,6 +54,8 @@
 
               <a type="button" class="btn btn-dark rounded-pill btn-lg" href="/uploadmarks">Upload Marks</a>
 
+             
+
               <div class="col-lg-6 mx-auto">
               
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center first-page1">
@@ -70,8 +72,24 @@
               </div>
               </form>
               </div>
+
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center first-page1">
+                  
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                 <div class="form-group reg">
+                   <h3 class="main-heading">UPLOAD :</h3>
+                   
+                   <input type="file" name="link" class="red"/>
+                   <input type="text" class="form-control" name="code" value="<%=listTitle%>" hidden/>
+                 </div>
+ 
+                 <div class="form-group reg">
+                  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Upload course-plan</button>
+               </div>
+               </form>
+               </div>
               </div>
-              <!-- <a type="button" class="btn btn-dark rounded-pill btn-lg" href="/takeattendance">Take Attendance</a> -->
+             
 
               </div>
             </div>
