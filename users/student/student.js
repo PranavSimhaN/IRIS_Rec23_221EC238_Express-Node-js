@@ -1,8 +1,7 @@
 require('dotenv').config();
 var express=require("express");
 var router=express.Router();
-const session = require("express-session"); 
-var x =require("../Postgresql/function");
+var x =require("../../Postgresql/function");
 var passport=require("passport");
 
 
@@ -13,9 +12,8 @@ const client = require('twilio')(process.env.TWILIO_SID,process.env.TWILIO_AUTH_
 const nodemailer = require('nodemailer');
 
 
-var User=require("../models/user");
-var Counter = require("../models/counter");
-var Counter1= require("../models/counter1");
+var User=require("../../models/user");
+var Counter = require("../../models/counter");
 
 let current_student_id;
 let glogin;
@@ -156,7 +154,6 @@ router.get("/registerstudent", function(req, res){
 
 router.get("/loginstudent", function(req, res){
     glogin=1;
-    // current_student_id=null;
     res.render("student/login_st");
  });
 
@@ -352,7 +349,6 @@ router.get("/courseregistration", async function(req, res){
   let courseError="";
 
 router.post("/courseregistration", async function(req, res){
-    // hide="hidden";
     const code1=req.body.code1;
     const code2=req.body.code2;
     let user_name;
@@ -529,276 +525,6 @@ router.post("/viewspecificstudent", async function(req, res){
     }
     });
 
-    let code3;
+ 
 
-    router.post("/coursefeedback", async function(req, res){
-      code=req.body.code;
-      title=req.body.title;
-      student=req.body.student;
-      faculty=req.body.faculty;
-      student_id=req.body.student_id;
-      faculty_id=req.body.faculty_id;
-      code3=code;
-
-      if (req.isAuthenticated()){
-
-        await x.x34(faculty_id,student_id,student,faculty,code,title);
-        
-
-        try {
-          res.redirect("/feedback");
-          }
-        
-          catch (err) {
-            console.log(err);
-            res.redirect("/coursesstudent");
-    
-          }
-        } else {
-          res.redirect("/loginstudent");
-        }
-        });
-
-
-router.get("/feedback",async function(req,res){
-          if (req.isAuthenticated()){
-        
-            try {
-              items = await x.x35(current_student_id,code3);
-        
-             res.render("student/course_feedback", {
-              listItems: items
-            });
-           
-              }
-            
-              catch (err) {
-                console.log(err);
-              }
-        
-        } else {
-          res.redirect("/loginstudent");
-        }
-        });  
-
-
-router.post("/helpful", async(req, res) => {
-          const id = req.body.id;
-          const code = req.body.code;
-          const helpful = req.body.helpful;
-
-          if (req.isAuthenticated()){
-        
-          try {
-             
-            await x.x36(helpful,code,id);
-            res.redirect("/feedback");
-          } 
-          catch (err) {
-            console.log(err);
-          }
-        } else {
-          res.redirect("/loginstudent");
-        }
-        
-        });
-
-router.post("/rating", async(req, res) => {
-          const id = req.body.id;
-          const code = req.body.code;
-          const rating = req.body.rating;
-
-          if (req.isAuthenticated()){
-        
-          try {
-             
-            await x.x37(rating,code,id);
-            res.redirect("/feedback");
-          } 
-          catch (err) {
-            console.log(err);
-          }
-        } else {
-          res.redirect("/loginstudent");
-        }
-        
-        });
-
-
-router.post("/feedback", async(req, res) => {
-          const id = req.body.id;
-          const code = req.body.code;
-          const feedback = req.body.feedback;
-
-          if (req.isAuthenticated()){
-        
-          try {
-             
-            await x.x38(feedback,code,id);
-            res.redirect("/feedback");
-          } 
-          catch (err) {
-            console.log(err);
-          }
-        } else {
-          res.redirect("/loginstudent");
-        }
-        
-        });
-
-router.post("/submitfeedback", async(req, res) => {
-          const id = req.body.id;
-          const code = req.body.code;
-          const button = req.body.button;
-
-          if (req.isAuthenticated()){
-        
-          try {
-            await x.x39(button,code,id);
-            res.redirect("/allcoursesstudent");
-          } 
-          catch (err) {
-            console.log(err);
-          }
-        } else {
-          res.redirect("/loginstudent");
-        }
-        
-        });
-
-router.post("/feedbackdelete", async(req, res) => {
-          const id = req.body.id;
-          const code = req.body.code;
-          const appli_id = req.body.appli_id;
-
-          if (req.isAuthenticated()){
-        
-          try {
-            await x.x40(id,code,appli_id);
-            res.redirect("/feedback");
-          } 
-          catch (err) {
-            console.log(err);
-          }
-        } else {
-          res.redirect("/loginstudent");
-        }
-        
-        });
-
-
-
-router.post("/viewpdf", async function(req, res){
-        code1=req.body.code;
-        
-        if (req.isAuthenticated()){
-      
-          try {
-            items1 = await x.x3(code1);
-            res.render("student/pdf_view_student", {
-              listItems1:items1
-            });
-            }
-          
-            catch (err) {
-              console.log(err);
-              res.redirect("/coursesstudent");
-      
-            }
-      
-      } else {
-        res.redirect("/loginstudent");
-      }
-      });
-
-
-router.post("/seeatten", async function(req, res){
-  code1=req.body.code;
-  id=req.body.id;
-  
-  if (req.isAuthenticated()){
-
-    try {
-      let items2 = await x.x31(id,code1);
-     
-      let present=0;
-      let absent=0;
-      let total=items2.length;
-      
-
-      for(let i=0;i<items2.length;i++){
-        if(items2[i].attended===true){
-          present++;
-        }
-        else if(items2[i].attended===false){
-          absent++;
-        }
-      }
-
-      let present1=present;
-      let absent1=absent;
-
-        attendance = (present/(items2.length))*100;
-        // console.log(items2);
-        // console.log(items2.length);
-        // console.log(absent);
-        // console.log(present);
-        // console.log(attendance);
-
-      let atten =attendance;
-      let leaves=0;
-      let attend=0;
-
-      if(attendance>=75){
-      while(atten>=75 && atten<=100){
-          total=total+1.000;
-          atten=(present1/total)*100;
-          console.log(atten);
-            if(atten>=75){
-              leaves++;
-            }
-      }
-    }
-
-    else{
-      while(atten>=0 && atten<=75){
-        total=total+1.0;
-        present1=present1+1;
-        atten=(present1/total)*100;
-        if(atten<=75){
-          attend++;
-        }
-      }
-    }   
-    console.log("Leaves :"+leaves);
-    console.log("Attend :"+attend);
-
-        if(items.length!=0) {
-        res.render("student/attendance_st", {
-          listTitle: code1,
-          listItems: items2,
-          percent:Math.round(attendance),
-          Present:present,
-          Absent:absent,
-          Leaves:leaves,
-          Attend:attend,
-          Total:items2.length
-        });
-       }
-        else{
-          res.redirect("/allcoursesstudent");
-        }
-      }
-    
-      catch (err) {
-        console.log(err);
-        res.redirect("/coursesstudent");
-
-      }   
-
-} else {
-  res.redirect("/loginstudent");
-}
-});
-
-module.exports={router,current_student_id,glogin,goo_id,hide};
+module.exports={router};

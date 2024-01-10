@@ -20,10 +20,8 @@ const upload = multer({storage});
 var User=require("../models/user");
 var Counter1 = require("../models/counter1");
 
-let course;
 let code1; // /coursesfaculty
 let current_faculty_id;
-let errorMessage="";//To write error message for admin login
 
 
 router.get("/faculty", async (req, res) => {
@@ -435,10 +433,9 @@ router.get("/logout", (req, res) => {
     req.logout(req.user, err => {
       if(err) return next(err);
       hide="";
-      current_student_id="";
       current_faculty_id="";
       res.redirect("/");
     });
   });
 
-module.exports={router,hide,errorMessage,code1,current_faculty_id};
+module.exports={router};

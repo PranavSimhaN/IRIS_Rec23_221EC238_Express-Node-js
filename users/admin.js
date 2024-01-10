@@ -1,19 +1,13 @@
 require('dotenv').config();
 var express=require("express");
 var router=express.Router();
-const session = require("express-session"); 
 var x =require("../Postgresql/function");
 var passport=require("passport");
 
 var User=require("../models/user");
-var Counter = require("../models/counter");
 
-let glogin;
-let goo_id;
-let hide="";
 let errorMessage="";//To write error message for admin login
 let course;
-let code1; // /coursesfaculty
 
 
 router.get("/admin", async (req, res) => {
@@ -231,4 +225,4 @@ router.post("/loginadmin", function(req, res){
 
 
 
-module.exports={router,glogin,goo_id,hide,errorMessage,course};
+module.exports={router};
