@@ -137,59 +137,77 @@ c. Drop courses within the specified deadline.
 
 ## Screenshots :
 
+->Add iris Database
+
 ![Screenshot 2024-01-12 215359](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/ab990b04-a3af-4838-b43d-0df59a07b376)
 
+->First page
 
 ![Screenshot (283)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/48ad381b-84f5-4c04-912d-e10102c9b7cf)
 
+->Student page
 
 ![Screenshot (284)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/f7f9d053-a2be-4a8e-82c2-242c5274073f)
 
+->Admin's first page
 
 ![Screenshot (286)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/faee3fde-41d9-46e0-b17f-067411ce253d)
 
+->Student login page
 
 ![Screenshot (287)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/1bb68aa7-f139-419e-b7f0-50e29142cfc5)
 
+->Student's first page
 
 ![Screenshot (288)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/2f6c5155-d931-44a0-9a3a-4041dca47549)
 
+->Course registration page of student
 
 ![Screenshot (289)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/0d95259f-d5d1-49a8-96fb-fb9056d8b1d8)
 
+->Student page after course registration
 
 ![Screenshot (290)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/69586c1f-5ec2-4660-a662-2f90109b50bf)
 
+->Faculty's courses page
 
 ![Screenshot (291)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/a3ec1ec3-df2e-4dde-a505-55f236f6a6dd)
 
+->Faculty's course details page
 
 ![Screenshot (292)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/941fb820-b8ed-4724-bc27-a1c1e01c4690)
 
+->Faculty's course approval page
 
 ![Screenshot (293)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/f77ec11f-e497-4a01-b793-14e05f9090ea)
 
+Faculty's marks upload page
 
 ![Screenshot (294)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/85a13e70-1b77-4e1f-856b-27620ce52e67)
 
+->Faculty's attendance feature
 
 ![Screenshot (295)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/6a9d283c-6229-49ba-ad7a-8d1a93560977)
 
 
 ![Screenshot (296)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/d7da9386-123f-4575-bd40-49efeab715ca)
 
+->Student's course drop page
 
 ![Screenshot (297)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/c962e8d6-1fb5-4c04-b287-2da625b20c76)
 
+->Student's course details page
 
 ![Screenshot (298)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/c9d507c2-ec17-455d-a56e-e90fe12a42e7)
 
+Student's view attendance page
 
 ![Screenshot (299)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/81f82c49-9fbc-4ccc-a588-80abf77e6f93)
 
 
 ![Screenshot (300)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/0ffaa65b-a875-4042-9667-a5d812d0a937)
 
+->Student's course feedback page
 
 ![Screenshot (301)](https://github.com/PranavSimhaN/IRIS_Rec23_221EC238_Express-Node-js/assets/141490957/ed7aca88-75a4-4f45-9c4d-aaaba133d50d)
 
