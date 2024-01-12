@@ -1,3 +1,16 @@
+CREATE TABLE student (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  branch TEXT,
+  program TEXT
+);
+
+CREATE TABLE faculty (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  department TEXT
+);
+
 CREATE TABLE course (
   id SERIAL PRIMARY KEY,
 	student_id INTEGER REFERENCES student(id),
@@ -21,14 +34,6 @@ CREATE TABLE coursedetail (
 	schedule TEXT,
 	course_description VARCHAR(300),
   file_path TEXT
-);
-
-CREATE TABLE student (
-  id SERIAL PRIMARY KEY,
-
-  name TEXT,
-  branch TEXT,
-  program TEXT
 );
 
 CREATE TABLE attendance (
@@ -55,16 +60,3 @@ CREATE TABLE coursefeedback(
   feedback TEXT,
   button TEXT
 );
-
-CREATE TABLE faculty (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  department TEXT
-);
-
-
-
-
-INSERT INTO coursedetail (title,code,faculty_id,faculty) VALUES ('Digital Electronics','EC200',1,'DR. Ravi');
-INSERT INTO coursedetail (title,code,faculty_id,faculty) VALUES ('Data Structures','CS200',2,'DR. Madhu');
-INSERT INTO coursedetail (title,code,faculty_id,faculty) VALUES ('Analog Electronics','EC201',3,'DR. Kumar');

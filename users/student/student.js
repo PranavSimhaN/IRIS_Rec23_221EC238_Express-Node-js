@@ -167,6 +167,8 @@ router.post("/registerstudent", function(req, res){
     
     if(req.body.conpassword===req.body.password && name!="NULL"){
 
+// Counter model is for providing consecutive student-id for the
+
   Counter.findOneAndUpdate(
   {code:"autoval"},
   {"$inc":{"seq":1,"id":1}},
@@ -238,8 +240,6 @@ router.post("/registerstudent", function(req, res){
               return console.log('Email Sent');
               }
               });
-
-
 
             await x.x1(name,program,department);
               console.log(name);
