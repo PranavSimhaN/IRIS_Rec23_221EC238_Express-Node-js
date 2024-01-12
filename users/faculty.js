@@ -5,6 +5,7 @@ const session = require("express-session");
 var x = require("../Postgresql/function");
 var passport = require("passport");
 var multer = require("multer");
+const nodemailer = require('nodemailer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

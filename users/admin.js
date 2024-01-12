@@ -66,7 +66,7 @@ router.post("/addcourse", async (req, res) => {
   const title = req.body.title;
   const code = req.body.code;
   const faculty = req.body.faculty;
-  const faculty_id = req.body.faculty_id;
+  // const faculty_id = req.body.faculty_id;
   const schedule = req.body.schedule;
   if (req.isAuthenticated()) {
     try {
