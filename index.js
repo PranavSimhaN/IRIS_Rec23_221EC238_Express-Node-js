@@ -18,10 +18,16 @@ var Counter1 = require("../test i/models/counter1");
 const x = require("./Postgresql/function");
 
 var student = require("./users/student/student");
-var admin = require("./users/admin");
-var faculty = require("./users/faculty");
 var cousrse_feedback_student = require("./users/student/coursefeedback");
 var attendance_student = require("./users/student/viewattendance");
+
+var admin = require("./users/admin");
+
+var faculty = require("./users/faculty/faculty");
+var attendance_faculty = require("./users/faculty/takeattendance");
+
+
+
 
 const app = express();
 const port = 3000;
@@ -80,6 +86,7 @@ app.use(admin.router);
 // ------------------------------------->Faculty<-------------------------------------------
 
 app.use(faculty.router);
+app.use(attendance_faculty.router);
 
 // ------------------------------------------------------------------------------------------
 

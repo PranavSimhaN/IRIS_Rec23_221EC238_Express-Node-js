@@ -2,6 +2,8 @@
 
 This task is designed to empower users with the ability to select, enroll, and manage their course schedules seamlessly.
 
+->Video link:https://youtu.be/nIBnlnRCgb0?si=fJs9e1sVM_vkU-Nk
+
 
 ## Installation Steps:
 
@@ -60,8 +62,7 @@ To deploy this project run
   nodemon index.js
 ```
 
-3. Type the below command to run the server.
-4. Register the admin (i will remove register option,for now i just kept it for salting and hasing the password).
+3. Register the admin (i will remove register option,for now i just kept it for salting and hasing the password).
 
 
 ## List of implemented features(All the specified features are implemented along with bonus)
@@ -77,6 +78,7 @@ To deploy this project run
 9. Next, the system forwards this request to the course instructor.
 10. The instructor gets the list of students who have shown interest, and can choose whether to enroll them or drop them.
 11. Functions of each role 
+
 ->Admin
 
 a. Admin can view all courses, student enrollments.
@@ -119,7 +121,9 @@ c. Drop courses within the specified deadline.
 
 ->Students can give multiple course feedbacks but i have given the feature to delete them so that they can keep only one.
 
-->On smaller screen, the UI breaks
+->On smaller screen, the UI breaks.
+
+->Not a bug but yeah the codes could have been made even more modular(that i can do anytime).
 
 ## References :
 
