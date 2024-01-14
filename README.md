@@ -2,7 +2,7 @@
 
 This task is designed to empower users with the ability to select, enroll, and manage their course schedules seamlessly.
 
-->Video link:https://youtu.be/nIBnlnRCgb0?si=fJs9e1sVM_vkU-Nk
+->Video link:https://youtu.be/AWQ8bs-UEus?si=MC0MUmIPBo1ptUFF
 
 
 ## Installation Steps:
