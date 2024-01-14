@@ -37,6 +37,7 @@ https://sbp.enterprisedb.com/getfile.jsp?fileid=1258653
 
 6. Replace all the places with your tokens in place of mine.
 
+7. Create a MongoDB Atlas server and get the MongoDB uri ,paste that in my code or install mongodb in your device and connect locally.
 
 
 
