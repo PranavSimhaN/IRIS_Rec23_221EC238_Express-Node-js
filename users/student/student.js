@@ -19,7 +19,7 @@ let current_student_id;
 let glogin;
 let goo_id;
 let hide = "";
-let errorMessage;
+let errorMessage = "";
 let current_name;
 
 passport.use(
@@ -147,7 +147,7 @@ router.get("/student", async (req, res) => {
 
 router.get("/registerstudent", function (req, res) {
   glogin = 0;
-  res.render("student/register_st");
+  res.render("student/register_st", { loginE: errorMessage });
 });
 
 router.get("/loginstudent", function (req, res) {
@@ -264,9 +264,8 @@ router.post("/registerstudent", function (req, res) {
       }
     );
   } else {
-    errorMessage = "(Fill all the details and match both passwords)";
-    console.log(errorMessage);
-    res.render("student/register_st");
+    errorMessage = "(Match both passwords)";
+    res.redirect("/registerstudent");
   }
 });
 
