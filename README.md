@@ -78,7 +78,8 @@ To deploy this project run
 8. Students can submit their course selections.
 9. Next, the system forwards this request to the course instructor.
 10. The instructor gets the list of students who have shown interest, and can choose whether to enroll them or drop them.
-11. Functions of each role 
+11. The website is authenticated and authorized too.(once you restart or logout it takes you to the login page). 
+12. Functions of each role 
 
 ->Admin
 
